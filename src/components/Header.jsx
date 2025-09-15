@@ -3,6 +3,7 @@ import logo from "../assets/only-logo.png";
 
 const Header = () => {
   return (
+    <>
     <div className="border-1 p-3 m-3 mt-5 rounded-xl flex items-center">
       <img
         className="h-15 w-15 ml-4 rounded-lg"
@@ -20,6 +21,7 @@ const Header = () => {
         Cart
       </span>
     </div>
+  </>
   );
 };
 
