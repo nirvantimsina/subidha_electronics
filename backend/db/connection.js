@@ -1,6 +1,8 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
+import dotenv from "dotenv";
+dotenv.config();
 
-const uri = process.env.LOCAL_URI || "";
+const uri = process.env.LOCAL_URI || "mongodb://127.0.0.1:27017/subidha-db";
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -21,6 +23,6 @@ try {
     console.error(err);
 }
 
-let db = client.db("products");
+let db = client.db("subidha-db");
 
 export default db;
