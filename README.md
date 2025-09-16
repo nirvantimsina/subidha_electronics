@@ -1,4 +1,4 @@
-# Subidha Electronis
+# Subidha Electronics
 
 This website is made for the online commercial support of the physical store of Subidha Electronics that deals with inverters, batteries, fans, and many more electrical as well as home appliances.
 
