@@ -6,7 +6,9 @@
   "scripts": {
     "dev-backend": "nodemon ./backend/server.js",
     "dev-frontend": "npm run dev-frontend --prefix ./frontend",
-    "dev": "concurrently \"npm run dev-backend\" \"npm run dev-frontend\""
+    "dev": "concurrently \"npm run dev-backend\" \"npm run dev-frontend\"",
+    "build": "vite build",
+  "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -16,10 +18,12 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
-    "mongodb": "^6.19.0"
+    "mongodb": "^6.19.0",
+    "vite": "^7.1.5"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "vite": "^7.1.5"
   }
 }
