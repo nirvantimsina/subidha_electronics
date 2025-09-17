@@ -1,28 +1,36 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 import dotenv from "dotenv";
-dotenv.config();
 
-const uri = process.env.LOCAL_URI || "mongodb://127.0.0.1:27017/subidha-db";
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    },
-});
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-try {
-    // connect the client to the server
-    await client.connect();
-    // send a ping to confirm connection
-    await client.db("admin").command({ping: 1 });
-    console.log(
-        "The database has been pinged. Successful Connection to MongoDB!"
-    );
-} catch (err) {
-    console.error(err);
+// load backend/.env explicitly
+dotenv.config({ path: join(__dirname, "../../.env") });
+
+const uri = process.env.CLOUD_URI;
+
+if (!uri) {
+  throw new Error("❌ LOCAL_URI is not defined in .env file");
 }
 
-let db = client.db("subidha-db");
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  },
+});
 
-export default db;
+export async function connectDB() {
+  try {
+    await client.connect();
+    await client.db("admin").command({ ping: 1 });
+    console.log("✅ Connected and pinged MongoDB successfully!");
+  } catch (err) {
+    console.error("❌ Failed to connect MongoDB:", err);
+    process.exit(1); // Exit app if DB fails
+  }
+}
+
+export const db = client.db("subidha-db");
