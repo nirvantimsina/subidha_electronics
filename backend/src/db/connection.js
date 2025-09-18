@@ -1,20 +1,20 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+import dotenv from "dotenv";
 
-// import { fileURLToPath } from "url";
-// import { dirname, join } from "path";
-// import dotenv from "dotenv";
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// const __dirname = dirname(fileURLToPath(import.meta.url));
+// Only load .env locally, not in production
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config({ path: join(__dirname, "../../.env") });
+}
 
-// load backend/.env explicitly
-// dotenv.config{ path: join(__dirname, "../../.env") }
-
-// dotenv.config();
-
-const uri = process.env.CLOUD_URI;
+// Choose URI: CLOUD_URI for production, LOCAL_URI for local dev
+const uri = process.env.CLOUD_URI || process.env.LOCAL_URI;
 
 if (!uri) {
-  throw new Error("❌ CLOUD_URI is not defined in .env file");
+  throw new Error("❌ MongoDB URI is not defined in environment variables");
 }
 
 const client = new MongoClient(uri, {
