@@ -1,11 +1,9 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-const uri = process.env.CLOUD_URI || "mongodb://127.0.0.1:27017/subidha-db"; // must be set in Vercel Environment Variables
+const uri = process.env.CLOUD_URI || "mongodb://127.0.0.1:27017/subidha-db";
 
 if (!uri) {
-  throw new Error(
-    "❌ CLOUD_URI is not defined in environment variables. "
-  );
+  throw new Error("❌ MongoDB URI is not defined in environment variables");
 }
 
 const client = new MongoClient(uri, {
@@ -18,12 +16,14 @@ const client = new MongoClient(uri, {
 
 export async function connectDB() {
   try {
-    await client.connect();
-    await client.db("admin").command({ ping: 1 });
-    console.log("✅ Connected and pinged MongoDB successfully!");
+    if (!client.isConnected()) {
+      await client.connect();
+      await client.db("admin").command({ ping: 1 });
+      console.log("✅ Connected to MongoDB!");
+    }
   } catch (err) {
-    console.error("❌ Failed to connect MongoDB:", err);
-    process.exit(1); // Exit app if DB fails
+    console.error("❌ MongoDB connection failed:", err);
+    throw err;
   }
 }
 
