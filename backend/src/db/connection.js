@@ -1,11 +1,10 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-const uri = process.env.CLOUD_URI; // must be set in Vercel Environment Variables
+const uri = process.env.CLOUD_URI || "mongodb://127.0.0.1:27017/subidha-db"; // must be set in Vercel Environment Variables
 
 if (!uri) {
   throw new Error(
-    "❌ CLOUD_URI is not defined in environment variables. " +
-    "Go to Vercel Project → Settings → Environment Variables and add it."
+    "❌ CLOUD_URI is not defined in environment variables. "
   );
 }
 
