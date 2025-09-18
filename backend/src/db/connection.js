@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 // Choose URI: CLOUD_URI for production, LOCAL_URI for local dev
-const uri = process.env.CLOUD_URI;
+const uri = process.env.LOCAL_URI;
 
 if (!uri) {
   throw new Error("❌ MongoDB URI is not defined in environment variables");
@@ -29,7 +29,7 @@ export async function connectDB() {
   try {
     await client.connect();
     await client.db("admin").command({ ping: 1 });
-    console.log("✅ Connected and pinged MongoDB successfully!");
+    console.log(`✅ Connected and pinged MongoDB successfully in ${uri}`);
   } catch (err) {
     console.error("❌ Failed to connect MongoDB:", err);
     process.exit(1); // Exit app if DB fails

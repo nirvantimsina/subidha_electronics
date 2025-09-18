@@ -1,5 +1,7 @@
 import React from 'react'
 
+// this react component is for the landing page of the website
+
 const Home = () => {
   return (
     <>

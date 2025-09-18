@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+// this is the component for the product cards
+
 const Product = () => {
   const [products, setProducts] = useState([]);
 

@@ -1,6 +1,8 @@
 import React from "react";
 import logo from "../assets/only-logo.png";
 
+// this is the component for the header of the website
+
 const Header = () => {
   return (
     <>
