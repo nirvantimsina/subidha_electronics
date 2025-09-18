@@ -1,17 +1,20 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
-import { fileURLToPath } from "url";
-import { dirname, join } from "path";
-import dotenv from "dotenv";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+// import { fileURLToPath } from "url";
+// import { dirname, join } from "path";
+// import dotenv from "dotenv";
+
+// const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // load backend/.env explicitly
-dotenv.config({ path: join(__dirname, "../../.env") });
+// dotenv.config{ path: join(__dirname, "../../.env") }
+
+// dotenv.config();
 
 const uri = process.env.CLOUD_URI;
 
 if (!uri) {
-  throw new Error("❌ LOCAL_URI is not defined in .env file");
+  throw new Error("❌ CLOUD_URI is not defined in .env file");
 }
 
 const client = new MongoClient(uri, {
