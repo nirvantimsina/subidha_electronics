@@ -1,7 +1,7 @@
+// backend/src/db/connection.js
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-const uri = process.env.CLOUD_URI || "mongodb://127.0.0.1:27017/subidha-db";
-
+const uri = process.env.CLOUD_URI;
 if (!uri) {
   throw new Error("❌ MongoDB URI is not defined in environment variables");
 }
@@ -16,15 +16,16 @@ const client = new MongoClient(uri, {
 
 export async function connectDB() {
   try {
-    if (!client.isConnected()) {
-      await client.connect();
-      await client.db("admin").command({ ping: 1 });
-      console.log("✅ Connected to MongoDB!");
-    }
+    // connect once
+    await client.connect();
+    // ping to confirm
+    await client.db("admin").command({ ping: 1 });
+    console.log("✅ Connected and pinged MongoDB successfully!");
   } catch (err) {
     console.error("❌ MongoDB connection failed:", err);
-    throw err;
+    throw err; // let the caller handle exit if needed
   }
 }
 
+// export db instance directly
 export const db = client.db("subidha-db");
