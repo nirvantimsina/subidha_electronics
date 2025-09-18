@@ -11,7 +11,16 @@ app.use(cors());
 app.use(express.json());
 app.use("/products", products);
 
-app.listen(PORT, async () => {
-  await connectDB(); // connect DB only when server starts
-  console.log(`🚀 Server running on port ${PORT}`);
-});
+async function startServer() {
+  try {
+    await connectDB(); // connect DB first
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error("❌ Failed to start server due to DB connection error", err);
+    process.exit(1); // exit process if DB connection fails
+  }
+}
+
+startServer();

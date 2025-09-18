@@ -1,11 +1,12 @@
-// backend/src/db/connection.js
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-// fucking vercel's .env isnt working, i hate it here, pls dont hack my db :(
-const uri = process.env.CLOUD_URI || "mongodb+srv://rajtimsina403:admin@subidha-db.epgzsnp.mongodb.net/?retryWrites=true&w=majority&appName=subidha-db";
+const uri = process.env.CLOUD_URI; // must be set in Vercel Environment Variables
 
 if (!uri) {
-  throw new Error("❌ CLOUD_URI is not defined in environment variables");
+  throw new Error(
+    "❌ CLOUD_URI is not defined in environment variables. " +
+    "Go to Vercel Project → Settings → Environment Variables and add it."
+  );
 }
 
 const client = new MongoClient(uri, {
