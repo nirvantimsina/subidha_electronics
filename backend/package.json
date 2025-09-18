@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev-backend": "nodemon server.js",
+    "dev-backend": "node server.js",
     "dev-frontend": "npm run dev-frontend --prefix ../frontend",
     "dev":"concurrently \"npm run dev-backend\" \"npm run dev-frontend\""
   },
@@ -21,7 +21,6 @@
     "mongodb": "^6.19.0"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1",
-    "nodemon": "^3.1.10"
+    "concurrently": "^9.2.1"
   }
 }
