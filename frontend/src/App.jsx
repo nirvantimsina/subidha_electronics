@@ -4,6 +4,8 @@ import Home from "./components/Home";
 import Product from "./components/Product";
 import Cards from "./components/Cards";
 import State from "./components/State";
+import Effect from "./components/Effect";
+import DigitalClock from "./components/DigitalClock";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
     <Product/>
     <Cards cardName={"Hello"} cardDescription={"World"}/>
     <State />
+    <Effect />
+    <DigitalClock />
     </>
   );
 }
