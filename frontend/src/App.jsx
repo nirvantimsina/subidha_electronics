@@ -2,6 +2,8 @@ import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Product from "./components/Product";
+import Cards from "./components/Cards";
+import State from "./components/State";
 
 function App() {
   return (
@@ -9,7 +11,8 @@ function App() {
     <Header/>
     <Home/>
     <Product/>
-    <Product/>
+    <Cards cardName={"Hello"} cardDescription={"World"}/>
+    <State />
     </>
   );
 }
