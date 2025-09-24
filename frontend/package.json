@@ -11,8 +11,9 @@
     "dev-backend": "nodemon ../backend/server.js",
     "dev": "concurrently \"npm run dev-backend\" \"npm run dev-frontend\""
   },
-  
   "dependencies": {
+    "@headlessui/react": "^2.2.8",
+    "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.1.13",
     "axios": "^1.12.2",
     "dotenv": "^17.2.2",
