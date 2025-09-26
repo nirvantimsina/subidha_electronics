@@ -1,12 +1,8 @@
 "use client";
 
 import Navbar from "./Navbar";
-import { Dialog, DialogPanel } from "@headlessui/react";
-import { FaShoppingCart, FaBars } from "react-icons/fa";
-import { IoCloseOutline } from "react-icons/io5";
-import onlyLogo from "../assets/only-logo.png";
+import { FaShoppingCart } from "react-icons/fa";
 
-import { useState } from "react";
 
 export default function App() {
   const navigation = [
@@ -15,7 +11,6 @@ export default function App() {
     { name: "About Us", href: "#" },
     { name: "Contact", href: "#" },
   ];
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <>
