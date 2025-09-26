@@ -28,8 +28,8 @@ export const Navbar = () => {
             <div className="flex lg:flex-1">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="flex flex-row items-center text-2xl font-bold tracking-tighter text-gray-300">
-                  <img alt="" src={onlyLogo} className="h-15 w-auto" /> Subidha
-                  Electronics{" "}
+                  <img alt="" src={onlyLogo} className="h-15 w-auto" /> 
+                  Subidha Electronics
                 </span>
               </a>
             </div>
@@ -56,41 +56,8 @@ export const Navbar = () => {
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
               <a href="#" className="text-sm/6 font-semibold text-white">
-                <div>
-                  {/* sidebar starts from here */}
-                  <div className="drawer drawer-end">
-                    <input
-                      id="my-drawer-4"
-                      type="checkbox"
-                      className="drawer-toggle"
-                    />
-                    <div className="drawer-content">
-                      {/* Page content here */}
-                      <label
-                        htmlFor="my-drawer-4"
-                        className="drawer-button btn btn-primary flex flex-row items-center-safe gap-2 rounded-md p-2"
-                      >
-                        View Cart <FaShoppingCart />
-                      </label>
-                    </div>
-                    <div className="drawer-side">
-                      <label
-                        htmlFor="my-drawer-4"
-                        aria-label="close sidebar"
-                        className="drawer-overlay"
-                      ></label>
-                      <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-                        {/* Sidebar content here */}
-                        <li>
-                          <a>Sidebar Item 1</a>
-                        </li>
-                        <li>
-                          <a>Sidebar Item 2</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+                {/* sidebar starts from here */}
+                
                 {/* side bar ends here */}
               </a>
             </div>
@@ -101,10 +68,10 @@ export const Navbar = () => {
             className="lg:hidden"
           >
             <div className="fixed inset-0 z-50" />
-            <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-100/10">
+            <DialogPanel className="fixed inset-y-0 right-0 z-200 w-full overflow-y-auto bg-gray-900 p-5 pt-12 sm:max-w-sm sm:ring-1 sm:ring-gray-100/10">
               <div className="flex items-center justify-between">
-                <a href="#" className="-m-1.5 p-1.5">
-                  <span className="flex flex-row items-center tracking-tighter text-gray-300 font-bold">
+                <a href="#" className="-m-2.5 p-1.5">
+                  <span className="flex flex-row items-center text-2xl font-bold tracking-tighter text-gray-300">
                     <img alt="" src={onlyLogo} className="h-15 w-auto" />{" "}
                     Subidha Electronics
                   </span>
@@ -115,7 +82,7 @@ export const Navbar = () => {
                   className="-m-2.5 rounded-md p-2.5 text-gray-200"
                 >
                   <span className="sr-only">Close menu</span>
-                  <IoCloseOutline aria-hidden="true" className="size-6" />
+                  <IoCloseOutline aria-hidden="true" className="size-9" />
                 </button>
               </div>
               <div className="mt-6 flow-root">
