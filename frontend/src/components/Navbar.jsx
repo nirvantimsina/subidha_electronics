@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaBars } from "react-icons/fa";
+import { IoCloseOutline } from "react-icons/io5";
 import { Dialog, DialogPanel } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import onlyLogo from "../assets/only-logo.png";
 
+import onlyLogo from "../assets/only-logo.png";
+import { CartDrawer } from "./CartDrawer";
 
 const navigation = [
   { name: "Product", href: "#" },
@@ -19,17 +20,17 @@ export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
     <>
-      <header className="absolute inset-x-0 top-0 z-50">
-        <div className="border-1 rounded-2xl">
+      <header className="absolute inset-x-0 top-4 z-1">
+        <div className="">
           <nav
             aria-label="Global"
-            className="flex items-center justify-between p-6 lg:px-8  shadow-indigo-500 shadow backdrop-blur-2xl" // this is the navbar fill area
+            className="flex items-center justify-between p-6 lg:px-8  shadow-indigo-500 shadow backdrop-blur-2xl border-2 rounded-2xl" // this is the navbar fill area
           >
             <div className="flex lg:flex-1">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="flex flex-row items-center text-2xl font-bold tracking-tighter text-gray-300">
-                  <img alt="" src={onlyLogo} className="h-15 w-auto" /> Subidha
-                  Electronics{" "}
+                  <img alt="" src={onlyLogo} className="h-15 w-auto" />
+                  Subidha Electronics
                 </span>
               </a>
             </div>
@@ -40,7 +41,7 @@ export const Navbar = () => {
                 className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-200"
               >
                 <span className="sr-only">Open main menu</span>
-                <Bars3Icon aria-hidden="true" className="size-6" />
+                <FaBars aria-hidden="true" className="size-6" />
               </button>
             </div>
             <div className="hidden lg:flex lg:gap-x-12">
@@ -55,12 +56,42 @@ export const Navbar = () => {
               ))}
             </div>
             <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <a href="#" className="text-sm/6 font-semibold text-white">
-                <span className="flex flex-row items-center-safe gap-2 rounded-md p-2 bg-indigo-500 hover:bg-indigo-400">
-                  {" "}
-                  View Cart <FaShoppingCart />{" "}
-                </span>
-              </a>
+              <span className="flex flex-row items-center-safe gap-2 rounded-md p-2">
+                <div>
+                  <div className="drawer drawer-end">
+                    <input
+                      id="my-drawer-4"
+                      type="checkbox"
+                      className="drawer-toggle"
+                    />
+                    <div className="drawer-content">
+                      {/* Page content here */}
+                      <label
+                        htmlFor="my-drawer-4"
+                        className="drawer-button btn btn-primary flex flex-row items-center-safe gap-2 rounded-md p-2"
+                      >
+                        View Cart <FaShoppingCart />
+                      </label>
+                    </div>
+                    <div className="drawer-side">
+                      <label
+                        htmlFor="my-drawer-4"
+                        aria-label="close sidebar"
+                        className="drawer-overlay"
+                      ></label>
+                      <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+                        {/* Sidebar content here */}
+                        <li>
+                          <a>Sidebar Item 1</a>
+                        </li>
+                        <li>
+                          <a>Sidebar Item 2</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </span>
             </div>
           </nav>
           <Dialog
@@ -83,7 +114,7 @@ export const Navbar = () => {
                   className="-m-2.5 rounded-md p-2.5 text-gray-200"
                 >
                   <span className="sr-only">Close menu</span>
-                  <XMarkIcon aria-hidden="true" className="size-6" />
+                  <IoCloseOutline aria-hidden="true" className="size-6" />
                 </button>
               </div>
               <div className="mt-6 flow-root">

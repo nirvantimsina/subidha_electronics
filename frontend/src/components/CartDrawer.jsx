@@ -1,43 +1,36 @@
-import React from "react";
-import { Button, CloseButton, Drawer, Portal } from "@chakra-ui/react";
-import { useState } from "react";
+import { FaShoppingCart } from "react-icons/fa";
 
-function CartDrawer() {
-      const [open, setOpen] = useState(false);
+export const CartDrawer = () => {
   return (
     <div>
-      <Drawer.Root open={open} onOpenChange={(e) => setOpen(e.open)}>
-        <Drawer.Trigger asChild>
-          <Button variant="outline" size="sm">
-            Open Drawer
-          </Button>
-        </Drawer.Trigger>
-        <Portal>
-          <Drawer.Backdrop />
-          <Drawer.Positioner>
-            <Drawer.Content>
-              <Drawer.Header>
-                <Drawer.Title>Drawer Title</Drawer.Title>
-              </Drawer.Header>
-              <Drawer.Body>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </Drawer.Body>
-              <Drawer.Footer>
-                <Button variant="outline">Cancel</Button>
-                <Button>Save</Button>
-              </Drawer.Footer>
-              <Drawer.CloseTrigger asChild>
-                <CloseButton size="sm" />
-              </Drawer.CloseTrigger>
-            </Drawer.Content>
-          </Drawer.Positioner>
-        </Portal>
-      </Drawer.Root>
+      <div className="drawer drawer-end">
+        <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+        <div className="drawer-content">
+          {/* Page content here */}
+          <label
+            htmlFor="my-drawer-4"
+            className="drawer-button btn btn-primary flex flex-row items-center-safe gap-2 rounded-md p-2"
+          >
+            View Cart <FaShoppingCart />
+          </label>
+        </div>
+        <div className="drawer-side">
+          <label
+            htmlFor="my-drawer-4"
+            aria-label="close sidebar"
+            className="drawer-overlay"
+          ></label>
+          <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+            {/* Sidebar content here */}
+            <li>
+              <a>Sidebar Item 1</a>
+            </li>
+            <li>
+              <a>Sidebar Item 2</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
-}
-
-export default CartDrawer;
+};
