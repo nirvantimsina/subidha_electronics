@@ -1,26 +1,23 @@
 import express from "express";
+import dotenv from "dotenv";
 import cors from "cors";
 
-import products from "./src/routes/product.js";
-import { connectDB } from "./src/db/connection.js";
+import connectdb from "./src/config/connection.js";
+import productsRoutes from "./src/routes/productRoutes.js";
 
-const PORT = process.env.PORT || 5050;
+dotenv.config();
+
 const app = express();
 
+// middlewares
 app.use(cors());
 app.use(express.json());
-app.use("/products", products);
 
-async function startServer() {
-  try {
-    await connectDB(); // connect DB first
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-    });
-  } catch (err) {
-    console.error("❌ Failed to start server due to DB connection error", err);
-    process.exit(1); // exit process if DB connection fails
-  }
-}
+//routes
+app.use("/api/products", productsRoutes);
 
-startServer();
+connectdb(); // connect DB first
+  app.listen(process.env.PORT, () => {
+    console.log(`Server running at: http://localhost:${process.env.PORT}`);
+    console.log(`Server started at port: ${process.env.PORT}`);
+  });
